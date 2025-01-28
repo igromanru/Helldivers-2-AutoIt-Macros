@@ -5,24 +5,43 @@
 #include <MsgBoxConstants.au3>
 #include <WinAPISysWin.au3>
 
-;~ HotKeySet("6","Resupply")
-HotKeySet("{F10}","_exit")
-
 AutoItSetOption("SendKeyDelay", 10)
-AutoItSetOption("SendKeyDownDelay", 10)
+AutoItSetOption("SendKeyDownDelay", 20)
+
+HotKeySet("^q", "_Cancel")
 
 Global $hDLL = DllOpen("user32.dll")
 Global $hWnd = 0
+
+Global $bCancelMacro = False
+
+Func Print($sMessage)
+    ConsoleWrite($sMessage & @CRLF)
+EndFunc
+
+Func _Cancel()
+    $bCancelMacro = True
+    Print("Cancel current macro")
+EndFunc
 
 While 1
     $hWnd = WinActive("HELLDIVERS™ 2")
     ;~ If IsHWnd($hHelhWndldivers2) Then
     ;~     ConsoleWrite("Found game window: " & $hWnd & @CRLF)
     ;~ EndIf
-	If _IsPressed(36, $hDLL) Then
-        Resupply()
-        Sleep(200)
-	EndIf
+    If $hWnd > 0 Then
+        ; https://kbdlayout.info/KBDGR/virtualkeys
+        If _IsPressed("36", $hDLL) Then ; 6 key
+            Resupply()
+            Sleep(200)
+        ElseIf _IsPressed("DC", $hDLL) Then ; ^ key on German keyboard
+            Reinforce()
+            Sleep(200)
+        ElseIf _IsPressed("BA", $hDLL) Then ; ü key on German keyboard
+            DropSuperSamplesLoop()
+            Sleep(200)
+        EndIf
+    EndIf
     Sleep(25)
 WEnd
 
@@ -47,22 +66,35 @@ Func OpenStratagemMenu()
     EndIf
 EndFunc
 
-Func CallStratagem($keySequence, $autoThrow = True, $instant = False)
+Func CallStratagem($keySequence, $autoThrow = True, $instantDrop = False)
     OpenStratagemMenu()
     PressSequence($keySequence)
-    If $instant Then
+    If $instantDrop Then
         PressKey("{NUMPAD1}")
     EndIf
     If $autoThrow Then
         MouseClick($MOUSE_CLICK_LEFT)
+        Sleep(800)
     EndIf
 EndFunc
 
-Func Resupply()
-    Local $resupply[] = ["{DOWN}{DOWN}{UP}{RIGHT}"]
-    CallStratagem($resupply)
+Func Resupply($instantDrop = False)
+    Local $keys[] = ["{DOWN}{DOWN}{UP}{RIGHT}"]
+    CallStratagem($keys, True, $instantDrop)
 EndFunc
 
-Func _exit()
-	Exit
+Func Reinforce()
+    Local $keys[] = ["{UP}{DOWN}{RIGHT}{LEFT}{UP}"]
+    CallStratagem($keys)
+EndFunc
+
+Func DropSuperSamplesLoop()
+    For $i = 0 To 10 Step +1
+        If $bCancelMacro Then
+            $bCancelMacro = False
+            ExitLoop
+        EndIf
+        Resupply(True)
+        Sleep(500)
+    Next
 EndFunc
