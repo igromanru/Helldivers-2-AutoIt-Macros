@@ -95,6 +95,6 @@ Func DropSuperSamplesLoop()
             ExitLoop
         EndIf
         Resupply(True)
-        Sleep(500)
+        Sleep(400)
     Next
 EndFunc

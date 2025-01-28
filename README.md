@@ -1,0 +1,1 @@
+# Helldivers 2 AutoIt Macros Framework
