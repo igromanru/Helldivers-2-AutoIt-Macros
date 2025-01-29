@@ -9,8 +9,9 @@ AutoItSetOption("SendKeyDelay", 10)
 AutoItSetOption("SendKeyDownDelay", 20)
 
 HotKeySet("^q", "_Cancel")
+OnAutoItExitRegister("_Exit")
 
-Global $hDLL = DllOpen("user32.dll")
+Local $hUser32DLL = DllOpen("user32.dll")
 Global $hWnd = 0
 
 Global $bCancelMacro = False
@@ -24,6 +25,13 @@ Func _Cancel()
     Print("Cancel current macro")
 EndFunc
 
+Func _Exit()
+    If $hUser32DLL Then
+        DllClose($hUser32DLL)
+    EndIf
+EndFunc
+
+
 While 1
     $hWnd = WinActive("HELLDIVERS™ 2")
     ;~ If IsHWnd($hHelhWndldivers2) Then
@@ -31,13 +39,13 @@ While 1
     ;~ EndIf
     If $hWnd > 0 Then
         ; https://kbdlayout.info/KBDGR/virtualkeys
-        If _IsPressed("36", $hDLL) Then ; 6 key
+        If _IsPressed("36", $hUser32DLL) Then ; 6 key
             Resupply()
             Sleep(200)
-        ElseIf _IsPressed("DC", $hDLL) Then ; ^ key on German keyboard
+        ElseIf _IsPressed("DC", $hUser32DLL) Then ; ^ key on German keyboard
             Reinforce()
             Sleep(200)
-        ElseIf _IsPressed("BA", $hDLL) Then ; ü key on German keyboard
+        ElseIf _IsPressed("BA", $hUser32DLL) Then ; ü key on German keyboard
             DropSuperSamplesLoop()
             Sleep(200)
         EndIf
