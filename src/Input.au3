@@ -7,7 +7,6 @@ Global $UP = "{UP}"
 Global $DOWN = "{DOWN}"
 Global $LEFT = "{LEFT}"
 Global $RIGHT = "{RIGHT}"
-
 Global $OpenStratagemMenuKey = "y"
 
 Func PressKey($key)
@@ -37,9 +36,12 @@ Func OpenStratagemMenu()
     Sleep(100)
 EndFunc
 
-Func CallStratagem($keySequence, $autoThrow = False)
+Func CallStratagem($keySequence, $autoThrow = False, $executeAfterInput = Null)
     OpenStratagemMenu()
     PressSequence($keySequence)
+    If IsFunc($executeAfterInput) Then
+        $executeAfterInput()
+    EndIf
     If $autoThrow Then
         MouseClick($MOUSE_CLICK_LEFT)
         Sleep(800)

@@ -5,7 +5,7 @@ Global Const $INFO_LEVEL = 1
 Global Const $WARNING_LEVEL = 2
 Global Const $ERROR_LEVEL = 3
 
-Local $iLogLevel = $INFO_LEVEL
+Global $iLogLevel = $INFO_LEVEL
 
 Func LogNewLine($sMessage)
     ConsoleWrite($sMessage & @CRLF)
