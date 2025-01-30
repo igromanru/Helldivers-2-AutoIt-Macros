@@ -6,13 +6,12 @@ Global $bCancelMacro = False
 
 HotKeySet("^q", "_CancelMacro")
 
+; Change keys here to match your game settings
 $UP = "{UP}"
 $DOWN = "{DOWN}"
 $LEFT = "{LEFT}"
 $RIGHT = "{RIGHT}"
-$OpenStratagemMenuKey = "y"
-
-$bAutoThrow = True
+$OpenStratagemListKey = "y" ; Change "Open Stratagem List" to "Press" in game settings!
 
 Func _CancelMacro()
     $bCancelMacro = True

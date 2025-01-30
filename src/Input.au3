@@ -7,7 +7,7 @@ Global $UP = "{UP}"
 Global $DOWN = "{DOWN}"
 Global $LEFT = "{LEFT}"
 Global $RIGHT = "{RIGHT}"
-Global $OpenStratagemMenuKey = "y"
+Global $OpenStratagemListKey = "y"
 
 Func PressKey($key)
     If IsString($key) Then
@@ -32,7 +32,7 @@ Func PressSequence($keySequence)
 EndFunc
 
 Func OpenStratagemMenu()
-    PressKey($OpenStratagemMenuKey)
+    PressKey($OpenStratagemListKey)
     Sleep(100)
 EndFunc
 
