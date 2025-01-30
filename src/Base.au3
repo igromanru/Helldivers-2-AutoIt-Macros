@@ -17,6 +17,15 @@ Global $sGameWindow = "HELLDIVERS™ 2"
 
 Global $aHotkeyMapping[1][4]
 
+#cs
+    Param $virtualKey: Virtual Key hex number as string, that is required by _IsPressed
+        See: https://www.autoitscript.com/autoit3/docs/libfunctions/_IsPressed.htm
+        German Keyboard: https://kbdlayout.info/KBDGR/virtualkeys
+    Param $functionToCall: Stratagem or any other function that should be triggered when the key was pressed
+        The function should accept two parameters ($autoThrow, $executeAfterInput)
+    Param $autoThrow: Parameter 1 that will be passed to the function (Default: False)
+    Param $executeAfterInput: Parameter 2 that will be passed to the function (Default: Null)
+#ce
 Func RegisterHotkey($virtualKey, $functionToCall, $autoThrow = False, $executeAfterInput = Null)
     If Not IsString($virtualKey) Then
         LogError("RegisterHotkey: Virtual Key code has to be a string!")

@@ -11,7 +11,7 @@ Global $OpenStratagemMenuKey = "y"
 
 Func PressKey($key)
     If IsString($key) Then
-        LogDebug("PressKey: " & $key & @CRLF)
+        ;~ LogDebug("PressKey: " & $key & @CRLF)
         Send($key)
     Else
         LogError("PressKey: Passed parameter is not a string!")
