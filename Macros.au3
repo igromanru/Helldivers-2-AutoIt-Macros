@@ -16,6 +16,11 @@ Global $hWnd = 0
 
 Global $bCancelMacro = False
 
+Global $UP = "{UP}"
+Global $DOWN = "{DOWN}"
+Global $LEFT = "{LEFT}"
+Global $RIGHT = "{RIGHT}"
+
 Func Print($sMessage)
     ConsoleWrite($sMessage & @CRLF)
 EndFunc
@@ -41,6 +46,9 @@ While 1
         ; https://kbdlayout.info/KBDGR/virtualkeys
         If _IsPressed("36", $hUser32DLL) Then ; 6 key
             Resupply()
+            Sleep(200)
+        ElseIf _IsPressed("30", $hUser32DLL) Then ; 0 key
+            Hellbomb()
             Sleep(200)
         ElseIf _IsPressed("DC", $hUser32DLL) Then ; ^ key on German keyboard
             Reinforce()
@@ -87,12 +95,17 @@ Func CallStratagem($keySequence, $autoThrow = True, $instantDrop = False)
 EndFunc
 
 Func Resupply($instantDrop = False)
-    Local $keys[] = ["{DOWN}{DOWN}{UP}{RIGHT}"]
+    Local $keys[] = [$DOWN, $DOWN, $UP, $RIGHT]
     CallStratagem($keys, True, $instantDrop)
 EndFunc
 
 Func Reinforce()
-    Local $keys[] = ["{UP}{DOWN}{RIGHT}{LEFT}{UP}"]
+    Local $keys[] = [$UP, $DOWN, $RIGHT, $LEFT, $UP]
+    CallStratagem($keys)
+EndFunc
+
+Func Hellbomb()
+    Local $keys[] = [$DOWN, $UP, $LEFT, $DOWN, $UP, $RIGHT, $DOWN, $UP]
     CallStratagem($keys)
 EndFunc
 
