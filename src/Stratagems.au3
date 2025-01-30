@@ -3,7 +3,7 @@
 #include "Input.au3"
 
 ; Supply Stratagems
-Func LiftJumpPack($autoThrow = False, $executeAfterInput = Null)
+Func Lift850JumpPack($autoThrow = False, $executeAfterInput = Null)
     Local $keys[] = [$DOWN, $UP, $UP, $DOWN, $UP]
     CallStratagem($keys, $autoThrow, $executeAfterInput)
 EndFunc
