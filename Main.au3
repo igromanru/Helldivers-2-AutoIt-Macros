@@ -33,7 +33,7 @@ Func DropSuperSamplesLoop($autoThrow = False, $executeAfterInput = Null)
 EndFunc
 
 RegisterHotkey("36", Resupply, True) ; 6 key
-RegisterHotkey("30", Hellbomb, True) ; 0 key
+RegisterHotkey("30", Hellbomb, True, ActivateInstantDropHook) ; 0 key
 RegisterHotkey("DC", Reinforce, True) ; ^ key on German keyboard
 RegisterHotkey("BA", DropSuperSamplesLoop, True, ActivateInstantDropHook) ; ü key on German keyboard
 
