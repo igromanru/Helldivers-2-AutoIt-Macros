@@ -62,8 +62,10 @@ Func Start()
                     Sleep(200)
                 EndIf
             Next
+            Sleep(25)
+        Else
+            Sleep(500)
         EndIf
-        Sleep(25)
     WEnd
 EndFunc
 
