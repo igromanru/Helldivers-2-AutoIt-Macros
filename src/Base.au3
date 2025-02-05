@@ -11,9 +11,9 @@ AutoItSetOption("SendKeyDownDelay", 20)
 
 OnAutoItExitRegister("OnExit")
 
+Global $sGameWindow = "HELLDIVERS™ 2"
 Global $hUser32DLL = DllOpen("user32.dll")
 Global $hWnd = 0
-Global $sGameWindow = "HELLDIVERS™ 2"
 
 Global $aHotkeyMapping[1][4]
 

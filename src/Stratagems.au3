@@ -103,6 +103,12 @@ Func PatriotExosuit($autoThrow = False, $executeAfterInput = Null)
     CallStratagem($keys, $autoThrow, $executeAfterInput)
 EndFunc
 
+Func PortableHellbomb($autoThrow = False, $executeAfterInput = Null)
+    Local $keys[] = [$DOWN, $RIGHT, $UP, $UP, $UP]
+    CallStratagem($keys, $autoThrow, $executeAfterInput)
+EndFunc
+
+
 ; Mission Stratagems
 Func Reinforce($autoThrow = False, $executeAfterInput = Null)
     Local $keys[] = [$UP, $DOWN, $RIGHT, $LEFT, $UP]
