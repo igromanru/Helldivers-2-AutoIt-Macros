@@ -8,6 +8,7 @@ Global $DOWN = "{DOWN}"
 Global $LEFT = "{LEFT}"
 Global $RIGHT = "{RIGHT}"
 Global $OpenStratagemListKey = "y"
+Global $BlockInput = True
 
 Func PressKey($key)
     If IsString($key) Then
@@ -37,6 +38,9 @@ Func OpenStratagemMenu()
 EndFunc
 
 Func CallStratagem($keySequence, $autoThrow = False, $executeAfterInput = Null)
+    If $BlockInput Then
+        BlockInput($BI_DISABLE)
+    EndIf
     OpenStratagemMenu()
     PressSequence($keySequence)
     If IsFunc($executeAfterInput) Then
@@ -45,5 +49,8 @@ Func CallStratagem($keySequence, $autoThrow = False, $executeAfterInput = Null)
     If $autoThrow Then
         MouseClick($MOUSE_CLICK_LEFT)
         Sleep(800)
+    EndIf
+    If $BlockInput Then
+        BlockInput($BI_ENABLE)
     EndIf
 EndFunc
