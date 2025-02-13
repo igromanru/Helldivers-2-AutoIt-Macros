@@ -22,7 +22,8 @@ Func ActivateInstantDropHook()
 EndFunc
 
 Func DropSuperSamplesLoop($autoThrow = False, $executeAfterInput = Null)
-    For $i = 0 To 10
+    $BlockInput = False
+    For $i = 1 To 10
         If $bCancelMacro Then
             $bCancelMacro = False
             ExitLoop
@@ -30,6 +31,7 @@ Func DropSuperSamplesLoop($autoThrow = False, $executeAfterInput = Null)
         Resupply($autoThrow, $executeAfterInput)
         Sleep(400)
     Next
+    $BlockInput = True
 EndFunc
 
 #cs
