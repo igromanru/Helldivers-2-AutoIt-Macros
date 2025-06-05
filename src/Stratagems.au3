@@ -8,6 +8,11 @@ Func Lift850JumpPack($autoThrow = False, $executeAfterInput = Null)
     CallStratagem($keys, $autoThrow, $executeAfterInput)
 EndFunc
 
+Func Lift860HoverPack($autoThrow = False, $executeAfterInput = Null)
+    Local $keys[] = [$DOWN, $UP, $UP, $DOWN, $LEFT, $RIGHT]
+    CallStratagem($keys, $autoThrow, $executeAfterInput)
+EndFunc
+
 Func SupplyPack($autoThrow = False, $executeAfterInput = Null)
     Local $keys[] = [$DOWN, $LEFT, $DOWN, $UP, $UP, $DOWN]
     CallStratagem($keys, $autoThrow, $executeAfterInput)
@@ -108,6 +113,10 @@ Func PortableHellbomb($autoThrow = False, $executeAfterInput = Null)
     CallStratagem($keys, $autoThrow, $executeAfterInput)
 EndFunc
 
+Func OneTrueFlag($autoThrow = False, $executeAfterInput = Null)
+    Local $keys[] = [$DOWN, $LEFT, $RIGHT, $RIGHT, $UP]
+    CallStratagem($keys, $autoThrow, $executeAfterInput)
+EndFunc
 
 ; Mission Stratagems
 Func Reinforce($autoThrow = False, $executeAfterInput = Null)
@@ -176,6 +185,11 @@ Func TeslaTower($autoThrow = False, $executeAfterInput = Null)
     CallStratagem($keys, $autoThrow, $executeAfterInput)
 EndFunc
 
+Func GrenadierBattlement($autoThrow = False, $executeAfterInput = Null)
+    Local $keys[] = [$DOWN, $RIGHT, $DOWN, $LEFT, $RIGHT]
+    CallStratagem($keys, $autoThrow, $executeAfterInput)
+EndFunc
+
 Func AntiPersonnelMinefield($autoThrow = False, $executeAfterInput = Null)
     Local $keys[] = [$DOWN, $LEFT, $UP, $RIGHT]
     CallStratagem($keys, $autoThrow, $executeAfterInput)
@@ -183,6 +197,11 @@ EndFunc
 
 Func IncendiaryMines($autoThrow = False, $executeAfterInput = Null)
     Local $keys[] = [$DOWN, $LEFT, $LEFT, $DOWN]
+    CallStratagem($keys, $autoThrow, $executeAfterInput)
+EndFunc
+
+Func GasMines($autoThrow = False, $executeAfterInput = Null)
+    Local $keys[] = [$DOWN, $LEFT, $LEFT, $RIGHT]
     CallStratagem($keys, $autoThrow, $executeAfterInput)
 EndFunc
 
