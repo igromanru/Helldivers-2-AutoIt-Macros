@@ -108,6 +108,16 @@ Func PatriotExosuit($autoThrow = False, $executeAfterInput = Null)
     CallStratagem($keys, $autoThrow, $executeAfterInput)
 EndFunc
 
+Func EmancipatorExosuit($autoThrow = False, $executeAfterInput = Null)
+    Local $keys[] = [$LEFT, $DOWN, $RIGHT, $UP, $LEFT, $DOWN, $UP]
+    CallStratagem($keys, $autoThrow, $executeAfterInput)
+EndFunc
+
+Func FastReconnaissanceVehicle($autoThrow = False, $executeAfterInput = Null)
+    Local $keys[] = [$LEFT, $DOWN, $RIGHT, $DOWN, $RIGHT, $DOWN, $UP]
+    CallStratagem($keys, $autoThrow, $executeAfterInput)
+EndFunc
+
 Func PortableHellbomb($autoThrow = False, $executeAfterInput = Null)
     Local $keys[] = [$DOWN, $RIGHT, $UP, $UP, $UP]
     CallStratagem($keys, $autoThrow, $executeAfterInput)
