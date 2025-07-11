@@ -8,7 +8,7 @@ Global $DOWN = "{DOWN}"
 Global $LEFT = "{LEFT}"
 Global $RIGHT = "{RIGHT}"
 Global $OpenStratagemListKey = "y"
-Global $BlockInput = True
+Global $BlockInput = True ; Per default user's input is blocked during Stratagem calls
 
 Func PressKey($key)
     If IsString($key) Then

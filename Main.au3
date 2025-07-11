@@ -2,10 +2,6 @@
 
 #include "src/Base.au3"
 
-Global $bCancelMacro = False
-
-HotKeySet("^q", "_CancelMacro")
-
 ; Change keys here to match your game settings
 $UP = "{UP}"
 $DOWN = "{DOWN}"
@@ -13,12 +9,18 @@ $LEFT = "{LEFT}"
 $RIGHT = "{RIGHT}"
 $OpenStratagemListKey = "y" ; Change "Open Stratagem List" to "Press" in game settings!
 
+; Extra setup to allow long macros to be cancelled
+HotKeySet("^q", "_CancelMacro") ; Ctrl + Q to cancel the macro
+
+Global $bCancelMacro = False
+
 Func _CancelMacro()
     $bCancelMacro = True
 EndFunc
 
-Func ActivateInstantDropHook()
-    PressKey("{NUMPAD1}")
+Func CallFullLoadout($autoThrow = False, $executeAfterInput = Null)
+    ; Put your support Stratagem calls here. Use Sleep(x) in between calls, if you need more time to aim to a different location.
+    FastReconnaissanceVehicle($autoThrow, $executeAfterInput)
 EndFunc
 
 Func DropSuperSamplesLoop($autoThrow = False, $executeAfterInput = Null)
@@ -34,6 +36,10 @@ Func DropSuperSamplesLoop($autoThrow = False, $executeAfterInput = Null)
     $BlockInput = True
 EndFunc
 
+Func ActivateInstantDropHook()
+    PressKey("{NUMPAD1}")
+EndFunc
+
 #cs
     https://www.autoitscript.com/autoit3/docs/libfunctions/_IsPressed.htm
     German Keyboard: https://kbdlayout.info/KBDGR/virtualkeys
@@ -41,7 +47,7 @@ EndFunc
 RegisterHotkey("36", Resupply, True) ; 6 key
 RegisterHotkey("30", Hellbomb, True, ActivateInstantDropHook) ; 0 key
 RegisterHotkey("DC", Reinforce, True) ; ^ key on German keyboard
+RegisterHotkey("DE", CallFullLoadout, True) ; ä key on German keyboard
 ; RegisterHotkey("BA", DropSuperSamplesLoop, True, ActivateInstantDropHook) ; ü key on German keyboard
-; RegisterHotkey("DE", FastReconnaissanceVehicle, True) ; ä key on German keyboard
 
 Start()
