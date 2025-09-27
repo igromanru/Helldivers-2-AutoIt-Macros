@@ -36,6 +36,36 @@ Func DropSuperSamplesLoop($autoThrow = False, $executeAfterInput = Null)
     $BlockInput = True
 EndFunc
 
+Func PickUpLoop($autoThrow = False, $executeAfterInput = Null)
+    Local $iPickUpsCount = 15
+    For $i = 1 To $iPickUpsCount
+        If $bCancelMacro Then
+            $bCancelMacro = False
+            ExitLoop
+        EndIf
+        ; Pick up 13 times
+        BlockInput($BI_DISABLE)
+        For $s = 1 To 13
+            If $bCancelMacro Then
+                ExitLoop
+            EndIf
+            PressKey("F")
+            Sleep(1000)
+        Next
+        BlockInput($BI_ENABLE)
+        ; Sleep loop with ability to cancel
+        if $i < $iPickUpsCount Then
+            For $s = 1 To 600
+                If $bCancelMacro Then
+                    ExitLoop
+                EndIf
+                Sleep(100)
+            Next
+        EndIf
+    Next
+    MsgBox(0, $sScriptName, "PickUpLoop finished")
+EndFunc
+
 Func ActivateInstantDropHook()
     PressKey("{NUMPAD1}")
 EndFunc
@@ -49,5 +79,6 @@ RegisterHotkey("30", Hellbomb, True, ActivateInstantDropHook) ; 0 key
 RegisterHotkey("DC", Reinforce, True) ; ^ key on German keyboard
 RegisterHotkey("C0", CallFullLoadout, True) ; ö (VK_OEM_3) key on German keyboard
 ; RegisterHotkey("BA", DropSuperSamplesLoop, True, ActivateInstantDropHook) ; ü (VK_OEM_1) key on German keyboard
+RegisterHotkey("BA", PickUpLoop, False) ; ü (VK_OEM_1) key on German keyboard
 
 Start()
