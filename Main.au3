@@ -1,5 +1,6 @@
-##RequireAdmin
+#RequireAdmin
 
+#include <Misc.au3>
 #include "src/Base.au3"
 
 ; Change keys here to match your game settings
@@ -11,6 +12,11 @@ $OpenStratagemListKey = "y" ; Change "Open Stratagem List" to "Press" in game se
 
 ; Extra setup to allow long macros to be cancelled
 HotKeySet("^q", "_CancelMacro") ; Ctrl + Q to cancel the macro
+
+If _Singleton("Helldivers-2-AutoIt-Macros", 1) = 0 Then
+    MsgBox($MB_SYSTEMMODAL + $MB_ICONINFORMATION, "Helldivers 2 AutoIt Macros", "The script is already running.")
+    Exit
+EndIf
 
 Global $bCancelMacro = False
 
@@ -77,8 +83,8 @@ EndFunc
 RegisterHotkey("36", Resupply, True) ; 6 key
 RegisterHotkey("30", Hellbomb, True, ActivateInstantDropHook) ; 0 key
 RegisterHotkey("DC", Reinforce, True) ; ^ key on German keyboard
-RegisterHotkey("C0", CallFullLoadout, True) ; ö (VK_OEM_3) key on German keyboard
+;~ RegisterHotkey("C0", CallFullLoadout, True) ; ö (VK_OEM_3) key on German keyboard
 ; RegisterHotkey("BA", DropSuperSamplesLoop, True, ActivateInstantDropHook) ; ü (VK_OEM_1) key on German keyboard
-RegisterHotkey("BA", PickUpLoop, False) ; ü (VK_OEM_1) key on German keyboard
+;~ RegisterHotkey("BA", PickUpLoop, False) ; ü (VK_OEM_1) key on German keyboard
 
 Start()
