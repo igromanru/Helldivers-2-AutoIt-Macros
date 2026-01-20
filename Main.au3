@@ -1,6 +1,5 @@
 #RequireAdmin
 
-#include <Misc.au3>
 #include "src/Base.au3"
 
 ; Change keys here to match your game settings
