@@ -7,7 +7,7 @@ $UP = "{UP}"
 $DOWN = "{DOWN}"
 $LEFT = "{LEFT}"
 $RIGHT = "{RIGHT}"
-$OpenStratagemListKey = "y" ; Change "Open Stratagem List" to "Press" in game settings!
+$OpenStratagemListKey = "y" ; In game set "Open Stratagem List" to "Press" and change the key to "z" for US keyboard
 
 ; Extra setup to allow long macros to be cancelled
 HotKeySet("^q", "_CancelMacro") ; Ctrl + Q to cancel the macro

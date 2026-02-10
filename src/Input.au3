@@ -7,7 +7,7 @@ Global $UP = "{UP}"
 Global $DOWN = "{DOWN}"
 Global $LEFT = "{LEFT}"
 Global $RIGHT = "{RIGHT}"
-Global $OpenStratagemListKey = "y"
+Global $OpenStratagemListKey = "z" ; The key to toggle the stratagem list. Default: "z"
 Global $BlockInput = False ; Per default user's input isn't blocked during Stratagem calls
 
 Func PressKey($key)
@@ -23,8 +23,8 @@ Func PressSequence($keySequence)
     If IsArray($keySequence) Then
         For $key In $keySequence
             PressKey($key)
+            Sleep(10)
         Next
-        Sleep(100)
     ElseIf IsString($keySequence) Then
         PressKey($keySequence)
     Else
