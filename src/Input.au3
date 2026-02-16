@@ -14,6 +14,7 @@ Func PressKey($key)
     If IsString($key) Then
         ;~ LogDebug("PressKey: " & $key & @CRLF)
         Send($key)
+        Sleep(20)
     Else
         LogError("PressKey: Passed parameter is not a string!")
     EndIf
@@ -23,7 +24,6 @@ Func PressSequence($keySequence)
     If IsArray($keySequence) Then
         For $key In $keySequence
             PressKey($key)
-            Sleep(10)
         Next
     ElseIf IsString($keySequence) Then
         PressKey($keySequence)
