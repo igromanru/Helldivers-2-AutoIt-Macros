@@ -80,7 +80,7 @@ EndFunc
     German Keyboard: https://kbdlayout.info/KBDGR/virtualkeys
 #ce
 RegisterHotkey("36", Resupply, True) ; 6 key
-RegisterHotkey("30", Hellbomb, True, ActivateInstantDropHook) ; 0 key
+RegisterHotkey("30", Hellbomb, True) ; 0 key
 RegisterHotkey("DC", Reinforce, True) ; ^ key on German keyboard
 ;~ RegisterHotkey("C0", CallFullLoadout, True) ; ö (VK_OEM_3) key on German keyboard
 ; RegisterHotkey("BA", DropSuperSamplesLoop, True, ActivateInstantDropHook) ; ü (VK_OEM_1) key on German keyboard

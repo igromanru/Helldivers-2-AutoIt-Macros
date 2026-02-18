@@ -45,6 +45,7 @@ Func CallStratagem($keySequence, $autoThrow = False, $executeAfterInput = Null)
     PressSequence($keySequence)
     If IsFunc($executeAfterInput) Then
         $executeAfterInput()
+        Sleep(50)
     EndIf
     If $autoThrow Then
         MouseClick($MOUSE_CLICK_LEFT)
